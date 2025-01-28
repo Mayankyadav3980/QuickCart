@@ -1,0 +1,15 @@
+nav{
+    border: 1px solid red;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+span{
+    border: 1px solid green;
+    margin: 1em;
+    /* padding: 1em; */
+    /* width: 100px; */
+}
