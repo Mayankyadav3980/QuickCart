@@ -1,12 +1,15 @@
 import React from 'react'
 import './navbar.css'
-import { Outlet } from 'react-router-dom'
+import { Outlet, NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
     <>
       <nav>
-        <h2>QuickCart</h2>
+        <NavLink to='/'>
+          <h2>QuickCart</h2>
+        </NavLink>
+        
         <div>
           <span>add product</span>
           <span>mayank</span>
