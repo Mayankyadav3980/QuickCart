@@ -18,17 +18,29 @@ const cartSlice = createSlice({
     name:'cart',
     initialState,
     reducers:{
-        getD:()=>{
-
+        updateProduct:(state, action)=>{
+            console.log("in updatePrdt", state.productList);
+            const up = action.payload;
+            let idx = state.productList.findIndex(prdt => prdt.id === Number(up.id))
+            // console.log(idx);
+            console.log('in updatePrdt', state.productList);
+            state.productList.splice(idx, 1, up);
+            console.log('in updatePrdt', state.productList);
+            
+            // show popup
+            alert('prdt updated successfully!');
+            
         }
     },
     extraReducers:(builder)=>{
         builder.addCase(getData.fulfilled, (state, action )=>{
             state.productList = action.payload;
+            console.log('in getData', state.productList);
+            
         })
     }
 
 })
 
 export const cartReducer = cartSlice.reducer;
-export  const {getD} = cartSlice.actions;
+export  const { updateProduct } = cartSlice.actions;
