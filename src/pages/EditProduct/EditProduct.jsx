@@ -20,7 +20,7 @@ const EditProduct = () => {
 
   const handleChange = (e) => {
     setUpdatedProduct(pv=>{
-      return {...pv, [e.target.name]:Number(e.target.value)}
+      return {...pv, [e.target.name]:e.target.value}
     })
   }
 
@@ -47,6 +47,7 @@ const EditProduct = () => {
           name="imageUrl"
           onChange={handleChange}
           value={updatedProduct.imageUrl}
+          required
         />
         <input
           type="text"
@@ -54,6 +55,7 @@ const EditProduct = () => {
           name="title"
           onChange={handleChange}
           value={updatedProduct.title}
+          required
         />
         <input
           type="number"
@@ -61,6 +63,7 @@ const EditProduct = () => {
           name="price"
           onChange={handleChange}
           value={updatedProduct.price}
+          required
         />
         <input
           type="number"
@@ -68,6 +71,7 @@ const EditProduct = () => {
           name="rating"
           onChange={handleChange}
           value={updatedProduct.rating}
+          required
         />
         <textarea
           type="text"
@@ -75,6 +79,7 @@ const EditProduct = () => {
           name="description"
           onChange={handleChange}
           value={updatedProduct.description}
+          required
         />
         <button type="submit">Update</button>
       </form>

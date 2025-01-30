@@ -3,9 +3,13 @@ import "./productCard.css";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteProduct } from "../../redux/cartReducer";
 
 const ProductCard = ({ prdt }) => {
   const { id, imageUrl, title, price, rating, description } = prdt;
+  const dispatch = useDispatch();
+
   return (
     <div className="card-container">
       <img src={imageUrl} alt="" />
@@ -26,7 +30,7 @@ const ProductCard = ({ prdt }) => {
           <NavLink to={`/edit-product/${id}`}>
             <MdEdit className="icon" />
           </NavLink>
-          <MdDelete className="icon" />
+          <MdDelete className="icon" onClick={()=>dispatch(deleteProduct(id))}/>
         </div>
       </div>
     </div>

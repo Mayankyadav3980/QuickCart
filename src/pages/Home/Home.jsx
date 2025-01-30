@@ -9,9 +9,7 @@ const Home = () => {
   const { productList } = useSelector(state=> state.cartReducer)
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getData());
-  }, []);
+ 
 
   return (
     <div className="home-container">
