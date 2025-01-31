@@ -2,10 +2,11 @@ import React, {useEffect} from 'react'
 import './navbar.css'
 import { Outlet, NavLink } from 'react-router-dom'
 import { getData } from '../../redux/cartReducer'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Navbar = () => {
   const dispatch  = useDispatch();
+  const {cart} =  useSelector(s=>s.cartReducer);
 
    useEffect(() => {
      dispatch(getData());
@@ -21,6 +22,9 @@ const Navbar = () => {
         <div>
           <NavLink to='/'>
               <span>Home</span>
+          </NavLink>
+          <NavLink to='/cart'>
+              <span>Cart {cart.length}</span>
           </NavLink>
           <NavLink to='/add-product'>
               <span>add product</span>

@@ -50,13 +50,13 @@ img{
 } */
 .options{
     border: 1px solid cyan;
-    margin: 2em 0.5em 0em;
+    margin: .5em 0.5em 0em;
     /* position: absolute; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    bottom: 0;
-    right: 0;
+    /* display: flex; */
+    /* justify-content: space-between; */
+    /* align-items: center; */
+    /* bottom: 0; */
+    /* right: 0; */
 }
 
 .icon{

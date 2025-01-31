@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { use } from 'react';
+import  { addProductToCart } from '../../redux/cartReducer';
 import './details.css'
 
 const Details = () => {
@@ -24,6 +24,7 @@ const Details = () => {
         <div className="desc">
           <p>{prdt.description}</p>
         </div>
+        <button onClick={()=>dispatch(addProductToCart(prdt))}>Add to Cart</button>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   productList: [],
   productToEdit: {},
-  cart: {},
+  cart: [],
   isSorted: false
 };
 
@@ -81,6 +81,13 @@ const cartSlice = createSlice({
     removeFilter: (state, action)=>{
       state.isSorted= false;
       // getData();
+    },
+    addProductToCart: (state, action)=>{
+      state.cart.push({...action.payload, inCart: true});
+    },
+    removeProductFromCart: (state, action) => {
+      let idx = state.cart.findIndex(p=>p.id===action.payload);
+      state.cart.splice(idx,1);
     }
   },
   extraReducers: (builder) => {
@@ -123,4 +130,4 @@ const cartSlice = createSlice({
 });
 
 export const cartReducer = cartSlice.reducer;
-export const { sortProducts, removeFilter } = cartSlice.actions;
+export const { sortProducts, removeFilter, addProductToCart } = cartSlice.actions;
