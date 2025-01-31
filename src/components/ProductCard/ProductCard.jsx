@@ -25,7 +25,9 @@ const ProductCard = ({ prdt }) => {
       </div>
 
       <div className="options">
-        <button>View Details</button>
+        <NavLink to={`/details/${id}`}>
+          <button>View Details</button>
+        </NavLink>
         <div>
           <NavLink to={`/edit-product/${id}`}>
             <MdEdit className="icon" />

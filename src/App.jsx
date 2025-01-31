@@ -17,7 +17,7 @@ function App() {
       element: <Navbar />,
       children: [
         { path: "", element: <Home /> },
-        { path: "details", element: <Details /> },
+        { path: "details/:id", element: <Details /> },
         { path: "cart", element: <Cart /> },
         { path: "add-product", element: <AddProduct /> },
         { path: "edit-product/:id", element: <EditProduct/>},
