@@ -4,6 +4,7 @@ const initialState = {
   productList: [],
   productToEdit: {},
   cart: {},
+  isSorted: false
 };
 
 export const getData = createAsyncThunk(
@@ -48,31 +49,44 @@ export const updateProduct = createAsyncThunk(
         body: JSON.stringify(args),
       }
     );
-    return res.json();
+    return args;
   }
 );
 
 export const deleteProduct = createAsyncThunk(
   "cart/deleteProduct",
   async (id, thunkAPI) => {
-    // console.log(id);
-    const res = await fetch(
-      `https://my-json-server.typicode.com/Mayankyadav3980/QuickCartDb/products/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
-    return id;
+    try {
+      const res = await fetch(
+        `https://my-json-server.typicode.com/Mayankyadav3980/QuickCartDb/products/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+      return id;
+    } catch (error) {
+        return thunkAPI.rejectWithValue('err ocr2');
+    }
   }
 );
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {},
+  reducers: {
+    sortProducts: (state, action) => {
+      state.isSorted = true;
+      state.productList.sort((a, b) => a.price - b.price);
+    },
+    removeFilter: (state, action)=>{
+      state.isSorted= false;
+      // getData();
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getData.fulfilled, (state, action) => {
       state.productList = action.payload;
+      state.sortedProducts = action.payload;
       // console.log('in getData', state.productList);
     });
 
@@ -89,20 +103,24 @@ const cartSlice = createSlice({
         console.log("error occured, keep calm");
       });
 
-    builder.addCase(deleteProduct.fulfilled, (state, action) => {
-      const idx = state.productList.findIndex(
-        (prdt) => prdt.id === action.payload
-      );
-      state.productList.splice(idx, 1);
-      // alert('prdt del');
-    });
+    builder
+      .addCase(deleteProduct.fulfilled, (state, action) => {
+        const idx = state.productList.findIndex(
+          (prdt) => prdt.id === action.payload
+        );
+        state.productList.splice(idx, 1);
+        // alert('prdt del');
+      })
+      .addCase(deleteProduct.rejected, (state, action) => {
+        console.log(action.payload);
+      });
 
-    builder.addCase(addProduct.fulfilled, (state, action)=>{
-        console.log(action.payload)
-        state.productList.unshift(action.payload);
-    })
+    builder.addCase(addProduct.fulfilled, (state, action) => {
+      // console.log(action.payload)
+      state.productList.unshift(action.payload);
+    });
   },
 });
 
 export const cartReducer = cartSlice.reducer;
-cartSlice.actions;
+export const { sortProducts, removeFilter } = cartSlice.actions;

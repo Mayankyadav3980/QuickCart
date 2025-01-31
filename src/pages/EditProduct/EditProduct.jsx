@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct, getData } from "../../redux/cartReducer";
+import { useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
+  const nav = useNavigate();
   // useEffect(()=>{dispatch(getData())},[])
   const {productList} = useSelector(state => state.cartReducer);
 
@@ -27,6 +29,7 @@ const EditProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateProduct(updatedProduct));    
+    nav('/');
   };
 
   return (

@@ -1,9 +1,20 @@
 .home-container{
     border: 1px solid blue;
-    width: 95%;
-    height: fit-content;
-    margin: 2em auto;
+    /* width: 98%; */
+    /* height: fit-content; */
+    margin: 1em auto;
     padding: 1em;
-    display: flex;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+}
+
+button{
+    float: right;
+}
+
+.products-container{
+    border: 1px solid black;
+     display: flex;
     flex-wrap: wrap;
+    margin: 1em 0;
 }
