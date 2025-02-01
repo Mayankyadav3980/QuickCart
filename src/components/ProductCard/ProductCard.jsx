@@ -4,7 +4,11 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { deleteProduct, addProductToCart } from "../../redux/cartReducer";
+import {
+  deleteProduct,
+  addProductToCart,
+  removeProductFromCart,
+} from "../../redux/cartReducer";
 
 const ProductCard = ({ prdt }) => {
   const { id, imageUrl, title, price, rating, description , inCart} = prdt;
@@ -29,21 +33,28 @@ const ProductCard = ({ prdt }) => {
           <NavLink to={`/details/${id}`}>
             <button>View Details</button>
           </NavLink>
-          <button onClick={() => dispatch(addProductToCart(prdt))}>
-            add Product to cart
-          </button>
+          {inCart ? (
+            <button onClick={() => dispatch(removeProductFromCart(id))}>
+              Remove from Cart
+            </button>
+          ) : (
+            <button onClick={() => dispatch(addProductToCart(prdt))}>
+              add Product to cart
+            </button>
+          )}
         </div>
-        <div>
-          <NavLink to={`/edit-product/${id}`}>
-            <MdEdit className="icon" />
-          </NavLink>
-          <MdDelete
-            className="icon"
-            onClick={() => dispatch(deleteProduct(id))}
-          />
-        </div>
+        {!inCart && (
+          <div>
+            <NavLink to={`/edit-product/${id}`}>
+              <MdEdit className="icon" />
+            </NavLink>
+            <MdDelete
+              className="icon"
+              onClick={() => dispatch(deleteProduct(id))}
+            />
+          </div>
+        )}
       </div>
-      {inCart && <button>Remove from Cart</button>}
     </div>
   );
 };

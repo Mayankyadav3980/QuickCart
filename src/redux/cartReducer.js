@@ -130,4 +130,5 @@ const cartSlice = createSlice({
 });
 
 export const cartReducer = cartSlice.reducer;
-export const { sortProducts, removeFilter, addProductToCart } = cartSlice.actions;
+export const { sortProducts, removeFilter, addProductToCart, removeProductFromCart } =
+  cartSlice.actions;
