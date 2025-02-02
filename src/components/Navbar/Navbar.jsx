@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const Navbar = () => {
   const dispatch  = useDispatch();
   const {cart} =  useSelector(s=>s.cartReducer);
-
+  const len = cart.length;
    useEffect(() => {
      dispatch(getData());
    }, []);
@@ -19,12 +19,12 @@ const Navbar = () => {
           <h2>QuickCart</h2>
         </NavLink>
         
-        <div>
+        <div id='nav-elements'>
           <NavLink to='/'>
               <span>Home</span>
           </NavLink>
           <NavLink to='/cart'>
-              <span>Cart {cart.length}</span>
+              <span>Cart {len>0 && len}</span>
           </NavLink>
           <NavLink to='/add-product'>
               <span>add product</span>

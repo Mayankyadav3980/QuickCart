@@ -88,6 +88,9 @@ const cartSlice = createSlice({
     removeProductFromCart: (state, action) => {
       let idx = state.cart.findIndex(p=>p.id===action.payload);
       state.cart.splice(idx,1);
+    },
+    resetCart: (state)=>{
+      state.cart=[];
     }
   },
   extraReducers: (builder) => {
@@ -130,5 +133,10 @@ const cartSlice = createSlice({
 });
 
 export const cartReducer = cartSlice.reducer;
-export const { sortProducts, removeFilter, addProductToCart, removeProductFromCart } =
-  cartSlice.actions;
+export const {
+  sortProducts,
+  removeFilter,
+  addProductToCart,
+  removeProductFromCart,
+  resetCart,
+} = cartSlice.actions;

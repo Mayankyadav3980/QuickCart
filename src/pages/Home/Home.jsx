@@ -18,6 +18,7 @@ const Home = () => {
     <div className="home-container">
       {isSorted ? (
         <button
+          id="sort-btn"
           onClick={() => {
             dispatch(removeFilter());
             dispatch(getData());
@@ -26,18 +27,22 @@ const Home = () => {
           Remove filter
         </button>
       ) : (
-        <button onClick={() => dispatch(sortProducts())}>Sort Products</button>
+        <button id="sort-btn" onClick={() => dispatch(sortProducts())}>
+          Sort Products
+        </button>
       )}
 
       <div className="products-container">
-        {
-          productList.map((prdt, idx) => {
+        {productList.map((prdt, idx) => {
           let id = prdt.id;
           let prdtt = isProductInCart(id);
 
-          return (prdtt ? (<ProductCard key={idx} prdt={prdtt} />) : (<ProductCard key={idx} prdt={prdt} />) )
-          })
-        }
+          return prdtt ? (
+            <ProductCard key={idx} prdt={prdtt} />
+          ) : (
+            <ProductCard key={idx} prdt={prdt} />
+          );
+        })}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import "./productCard.css";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { NavLink } from "react-router-dom";
+import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
 import {
   deleteProduct,
@@ -34,13 +35,25 @@ const ProductCard = ({ prdt }) => {
             <button>View Details</button>
           </NavLink>
           {inCart ? (
-            <button onClick={() => dispatch(removeProductFromCart(id))}>
-              Remove from Cart
-            </button>
+            <Button
+              text={"Remove from Cart"}
+              payload={id}
+              handleClick={removeProductFromCart}
+              // onClick={() => dispatch(removeProductFromCart(id))}
+            />
           ) : (
-            <button onClick={() => dispatch(addProductToCart(prdt))}>
-              add Product to cart
-            </button>
+            // <button onClick={() => dispatch(removeProductFromCart(id))}>
+            //   Remove from Cart
+            // </button>
+            <Button
+              text={"add Product to cart"}
+              payload={prdt}
+              handleClick={addProductToCart}
+              // onClick={() => dispatch(addProductToCart(prdt))}
+            />
+            // <button onClick={() => dispatch(addProductToCart(prdt))}>
+            //   add Product to cart
+            // </button>
           )}
         </div>
         {!inCart && (

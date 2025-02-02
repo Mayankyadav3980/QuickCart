@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/cartReducer";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 const AddProduct = () => {
   const { productList } = useSelector(s=>s.cartReducer);
@@ -74,7 +75,7 @@ const AddProduct = () => {
           value={newProduct.description}
           required
         />
-        <button type="submit">Update</button>
+        <Button text='Add' />
       </form>
     </div>
   );

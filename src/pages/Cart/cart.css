@@ -9,6 +9,10 @@
     display: flex;
     justify-content: space-between;
 }
+.cart-container > h1{
+    border: 1px solid blue;
+    margin: 1px auto;
+}
 
 .prdt-cnt{
     border: 1px solid blue;
@@ -23,4 +27,5 @@
     border: 1px solid black;
     width:20%;
     text-align: center;
+    height: 200px;
 }
