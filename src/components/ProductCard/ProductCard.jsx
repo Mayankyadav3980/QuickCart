@@ -31,42 +31,51 @@ const ProductCard = ({ prdt }) => {
 
       <div className="options">
         <div>
-          <NavLink to={`/details/${id}`}>
-            <button>View Details</button>
-          </NavLink>
           {inCart ? (
-            <Button
-              text={"Remove from Cart"}
-              payload={id}
-              handleClick={removeProductFromCart}
-              // onClick={() => dispatch(removeProductFromCart(id))}
-            />
+            <button
+              className="cart-btn"
+              onClick={() => dispatch(removeProductFromCart(id))}
+            >
+              {" "}
+              Remove from Cart{" "}
+            </button>
           ) : (
-            // <button onClick={() => dispatch(removeProductFromCart(id))}>
-            //   Remove from Cart
-            // </button>
-            <Button
-              text={"add Product to cart"}
-              payload={prdt}
-              handleClick={addProductToCart}
-              // onClick={() => dispatch(addProductToCart(prdt))}
-            />
-            // <button onClick={() => dispatch(addProductToCart(prdt))}>
-            //   add Product to cart
-            // </button>
+            // <Button
+            //   text={"Remove from Cart"}
+            //   payload={id}
+            //   handleClick={removeProductFromCart}
+            // />
+            <button
+              className="cart-btn"
+              onClick={() => dispatch(addProductToCart(prdt))}
+            >
+              Add Product to Cart
+            </button>
+            // <Button
+            //   text={"add Product to cart"}
+            //   payload={prdt}
+            //   handleClick={addProductToCart}
+            // />
           )}
         </div>
-        {!inCart && (
-          <div>
-            <NavLink to={`/edit-product/${id}`}>
-              <MdEdit className="icon" />
+        
+          <div className="icn">
+            <NavLink to={`/details/${id}`}>
+              {/* <button>View Details</button> */}
+              <Button text={"View Details"} />
             </NavLink>
-            <MdDelete
-              className="icon"
-              onClick={() => dispatch(deleteProduct(id))}
-            />
+            {!inCart && (
+            <div>
+              <NavLink to={`/edit-product/${id}`}>
+                <MdEdit className="icon" />
+              </NavLink>
+              <MdDelete
+                className="icon"
+                onClick={() => dispatch(deleteProduct(id))}
+              />
+            </div>)}
           </div>
-        )}
+        
       </div>
     </div>
   );

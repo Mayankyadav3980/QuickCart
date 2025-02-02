@@ -16,7 +16,7 @@
 
 .prdt-cnt{
     border: 1px solid blue;
-    width: 70%;
+    width: 80%;
     display: flex;
     /* float: left; */
     flex-wrap: wrap;

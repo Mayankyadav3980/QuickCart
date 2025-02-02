@@ -3,6 +3,7 @@ import "./home.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getData, sortProducts, removeFilter } from "../../redux/cartReducer";
+import Button from "../../components/Button/Button";
 
 const Home = () => {
   const { productList, isSorted, cart } = useSelector(
@@ -18,7 +19,7 @@ const Home = () => {
     <div className="home-container">
       {isSorted ? (
         <button
-          id="sort-btn"
+          className="sort-btn"
           onClick={() => {
             dispatch(removeFilter());
             dispatch(getData());
@@ -27,7 +28,8 @@ const Home = () => {
           Remove filter
         </button>
       ) : (
-        <button id="sort-btn" onClick={() => dispatch(sortProducts())}>
+        // <Button  text={'Sort Products'} handleClick={sortProducts}/>
+        <button className="sort-btn" onClick={() => dispatch(sortProducts())}>
           Sort Products
         </button>
       )}

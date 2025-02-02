@@ -1,11 +1,11 @@
 nav{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     background-color: white;
     color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1em;
+    padding: 1.2em 1.5em;
     margin-bottom: 1em;
 }
 
@@ -34,4 +34,5 @@ nav{
     text-decoration: none;
     color: rgb(3,97,199);
     letter-spacing: 1px;
+    
 }
