@@ -3,6 +3,8 @@ import './navbar.css'
 import { Outlet, NavLink } from 'react-router-dom'
 import { getData } from '../../redux/cartReducer'
 import { useDispatch, useSelector } from 'react-redux'
+import { FaHome, FaPlus, FaUser, FaShoppingCart } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar = () => {
   const dispatch  = useDispatch();
@@ -15,21 +17,31 @@ const Navbar = () => {
   return (
     <>
       <nav>
-        <NavLink to='/'>
-          <h2>QuickCart</h2>
+        <NavLink to="/" className="nav-brand">
+          <h2>
+            QuickCart
+            <FaShoppingCart />
+          </h2>
         </NavLink>
-        
-        <div id='nav-elements'>
-          <NavLink to='/'>
-              <span>Home</span>
+
+        <div id="nav-elements">
+          <NavLink to="/" className="nav-link">
+            <FaHome /> Home
           </NavLink>
-          <NavLink to='/cart'>
-              <span>Cart {len>0 && len}</span>
+          <NavLink to="/cart" className="nav-link">
+            <span>
+              <FaCartShopping />
+              {len > 0 && len} Cart
+            </span>
           </NavLink>
-          <NavLink to='/add-product'>
-              <span>add product</span>
+          <NavLink to="/add-product" className="nav-link">
+            <span>
+              <FaPlus /> Add Product
+            </span>
           </NavLink>
-          <span>mayank</span>
+          <span>
+            <FaUser /> Mayank
+          </span>
         </div>
       </nav>
       <Outlet />

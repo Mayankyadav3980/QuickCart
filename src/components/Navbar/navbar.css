@@ -4,13 +4,34 @@ nav{
     color: black;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1em;
     margin-bottom: 1em;
 }
 
-#nav-elements span{
+/* #nav-elements span{
     border: 1px solid green;
     margin: 1em;
-    /* padding: 1em; */
-    /* width: 100px; */
+    align-items: baseline;
+    padding: .5em;
+    text-decoration: none;
+} */
+
+.nav-link{
+    text-decoration: none;
+    color: black;
+     /* border: 1px solid green; */
+    margin: 1em;
+    font-size: 1.1rem;
+    /* text-align: baseline; */
+}
+.nav-link:hover{
+    color: rgb(3,97,199);
+    /* transform: scale(1.5); */
+}
+
+.nav-brand{
+    text-decoration: none;
+    color: rgb(3,97,199);
+    letter-spacing: 1px;
 }
