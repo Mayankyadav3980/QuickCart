@@ -10,6 +10,7 @@ import {
   addProductToCart,
   removeProductFromCart,
 } from "../../redux/cartReducer";
+import Rating from "../Rating";
 
 const ProductCard = ({ prdt }) => {
   const { id, imageUrl, title, price, rating, description , inCart} = prdt;
@@ -24,8 +25,8 @@ const ProductCard = ({ prdt }) => {
           {title.length > 17 ? title.substring(0, 17) + "..." : title}
         </h3>
         <div>
-          <p className="price">Rs. {price}</p>
-          <p>⭐️⭐️⭐️⭐️ {rating}</p>
+          <p className="price">&#8377;{price}</p>
+          <Rating rating={rating} />
         </div>
       </div>
 
@@ -58,13 +59,13 @@ const ProductCard = ({ prdt }) => {
             // />
           )}
         </div>
-        
-          <div className="icn">
-            <NavLink to={`/details/${id}`}>
-              {/* <button>View Details</button> */}
-              <Button text={"View Details"} />
-            </NavLink>
-            {!inCart && (
+
+        <div className="icn">
+          <NavLink to={`/details/${id}`}>
+            {/* <button>View Details</button> */}
+            <Button text={"View Details"} />
+          </NavLink>
+          {!inCart && (
             <div>
               <NavLink to={`/edit-product/${id}`}>
                 <MdEdit className="icon" />
@@ -73,9 +74,9 @@ const ProductCard = ({ prdt }) => {
                 className="icon"
                 onClick={() => dispatch(deleteProduct(id))}
               />
-            </div>)}
-          </div>
-        
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,15 +1,19 @@
-import React from 'react'
-import { NavLink, useParams } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import  { addProductToCart, removeProductFromCart } from '../../redux/cartReducer';
-import './details.css'
-import Button from '../../components/Button/Button';
+import React from "react";
+import { NavLink, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addProductToCart,
+  removeProductFromCart,
+} from "../../redux/cartReducer";
+import "./details.css";
+import Button from "../../components/Button/Button";
+import Rating from "../../components/Rating";
 
 const Details = () => {
-  const {id} = useParams();
-  const dispatch = useDispatch()
-  const { productList, cart} = useSelector(s=>s.cartReducer);
-  const prdt = productList.find(p=>p.id===Number(id));
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { productList, cart } = useSelector((s) => s.cartReducer);
+  const prdt = productList.find((p) => p.id === Number(id));
   const isProductInCart = (id) => {
     return cart.find((prdt) => prdt.id === Number(id));
   };
@@ -23,8 +27,8 @@ const Details = () => {
 
         <div className="desc">
           <h3>Name: {prdt.title}</h3>
-          <h4>Price: Rs.{prdt.price}</h4>
-          <h4>Rating: {prdt.rating}</h4>
+          <h4>Price: &#8377;{prdt.price}</h4>
+          <Rating rating={prdt.rating} />
 
           <p>{prdt.description}</p>
           {!isProductInCart(id) ? (
@@ -44,6 +48,6 @@ const Details = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Details
+export default Details;
