@@ -33,7 +33,7 @@ const AddProduct = () => {
   };
   return (
     <div className="form-container">
-      <h2>New Product details form</h2>
+      <h2>Add New Product  </h2>
       <form action="" onSubmit={handleSubmit}>
         <input
           type="url"

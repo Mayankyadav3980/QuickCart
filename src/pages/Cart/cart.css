@@ -1,5 +1,5 @@
 .cart-container{
-    border: 1px solid red;
+    /* border: 1px solid red; */
     width: 100%;
     min-width: 400px;
     /* max-width: 1000px; */
@@ -10,12 +10,12 @@
     justify-content: space-between;
 }
 .cart-container > h1{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin: 1px auto;
 }
 
 .prdt-cnt{
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     width: 80%;
     display: flex;
     /* float: left; */
@@ -24,8 +24,17 @@
 }
 
 .sidebar{
-    border: 1px solid black;
-    width:20%;
+    /* border: 1px solid black; */
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 5px rgb(237, 234, 234);
+    width:15%;
     text-align: center;
-    height: 200px;
+    height: fit-content;
+    padding: 2em;
+    margin: 1em 2em 0 0;
+}
+
+.sidebar > h2{
+    margin-bottom: 1em;
 }

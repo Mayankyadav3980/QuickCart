@@ -27,7 +27,7 @@ img{
 
 .desc{
     /* border: 1px solid green; */
-    margin-top: 1em;
+    margin: 1em 0.2em 0;
     /* margin-bottom: 0; */
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@ img{
 }
 .options{
     /* border: 1px solid cyan; */
-    margin: 1em 0.5em 0em;
+    margin: 1em 0.2em 0em;
     /* position: absolute; */
     /* display: flex; */
     /* justify-content: space-between; */
@@ -53,9 +53,9 @@ img{
 }
 
 .cart-btn{
-    background-color: black;
+    background-color: rgb(41, 41, 41);
     color: white;
-    width: 90%;
+    width: 100%;
     margin: 0 auto 5px;
     padding: .5em;
     border-radius: 5px;
@@ -64,7 +64,7 @@ img{
 
 .cart-btn:hover{
     background-color: transparent;
-    border-color: black ;
+    border-color: rgb(41, 41, 41);
     color: black;
     cursor: pointer;
 }
@@ -76,6 +76,7 @@ img{
     /* border: 1px solid red; */
     font-size: 1.5em;
     margin: 5px;
+    color: black;
     /* float:right */
 }
 .icon:hover{

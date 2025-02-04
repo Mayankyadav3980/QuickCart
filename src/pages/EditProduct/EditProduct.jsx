@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProduct, getData } from "../../redux/cartReducer";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 const EditProduct = () => {
   const {id} = useParams();
@@ -34,7 +35,7 @@ const EditProduct = () => {
 
   return (
     <div className="form-container">
-      <h2>Update details form</h2>
+      <h2>Update Details </h2>
       <form action="" onSubmit={handleSubmit}>
         {/* <div className="input-box">
           <label htmlFor="">Image Url</label>
@@ -84,7 +85,8 @@ const EditProduct = () => {
           value={updatedProduct.description}
           required
         />
-        <button type="submit">Update</button>
+        <Button text={'Update'}/>
+       
       </form>
     </div>
   );

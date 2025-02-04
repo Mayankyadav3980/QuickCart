@@ -21,7 +21,7 @@ const ProductCard = ({ prdt }) => {
 
       <div className="desc">
         <h3 className="title">
-          {title.length > 20 ? title.substring(0, 20) + "..." : title}
+          {title.length > 17 ? title.substring(0, 17) + "..." : title}
         </h3>
         <div>
           <p className="price">Rs. {price}</p>

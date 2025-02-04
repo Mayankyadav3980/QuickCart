@@ -26,9 +26,9 @@ const Cart = () => {
             ))}
           </div>
           <div className="sidebar">
-            <div>Total: Rs {totalAmount}</div>
+            <h2>Total: Rs {totalAmount}</h2>
             {/* <button onClick={handleCheckout}>Checkout</button> */}
-            <Button text="Checkout" onClick={handleCheckout} />
+            <Button text="Checkout" handleClick={handleCheckout} />
           </div>
         </>
       ) : (
