@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 
 const initialState = {
   productList: [],
@@ -77,27 +78,36 @@ const cartSlice = createSlice({
     sortProducts: (state, action) => {
       state.isSorted = true;
       state.productList.sort((a, b) => a.price - b.price);
+      toast.success('Filter Added')
     },
     removeFilter: (state, action)=>{
       state.isSorted= false;
+      toast.success("Filter Removed");
       // getData();
     },
     addProductToCart: (state, action)=>{
-      state.cart.push({...action.payload, inCart: true});
+      let prdt = { ...action.payload, inCart: true };
+      let cart = state.cart;
+      state.cart.push(prdt);
+      localStorage.setItem('cartItems', JSON.stringify(state.cart))
+      toast.success("Product Added to Cart");
     },
     removeProductFromCart: (state, action) => {
       let idx = state.cart.findIndex(p=>p.id===action.payload);
       state.cart.splice(idx,1);
+      localStorage.setItem('cartItems', JSON.stringify(state.cart));
+      toast.success("Product Removed from Cart");
     },
     resetCart: (state)=>{
       state.cart=[];
+      localStorage.setItem("cartItems",  JSON.stringify(state.cart));
+      toast.success('Your Purchase was successfull')
     }
   },
   extraReducers: (builder) => {
     builder.addCase(getData.fulfilled, (state, action) => {
       state.productList = action.payload;
-      state.sortedProducts = action.payload;
-      // console.log('in getData', state.productList);
+      state.cart = JSON.parse(localStorage.getItem("cartItems")) || [];
     });
 
     builder
@@ -106,11 +116,10 @@ const cartSlice = createSlice({
           (prdt) => prdt.id === action.payload.id
         );
         state.productList.splice(idx, 1, action.payload);
-        // console.log('in fulfilled');
-        // console.log(action.payload)
+        toast.success('Product Updated Successfully')
       })
       .addCase(updateProduct.rejected, (state, action) => {
-        console.log("error occured, keep calm");
+        console.log("error occured");
       });
 
     builder
@@ -119,7 +128,7 @@ const cartSlice = createSlice({
           (prdt) => prdt.id === action.payload
         );
         state.productList.splice(idx, 1);
-        // alert('prdt del');
+         toast.success("Product Deleted Successfully");
       })
       .addCase(deleteProduct.rejected, (state, action) => {
         console.log(action.payload);
@@ -128,6 +137,7 @@ const cartSlice = createSlice({
     builder.addCase(addProduct.fulfilled, (state, action) => {
       // console.log(action.payload)
       state.productList.unshift(action.payload);
+       toast.success("Product Added Successfully");
     });
   },
 });

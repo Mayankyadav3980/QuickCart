@@ -13,7 +13,6 @@ const Cart = () => {
 
   const handleCheckout = () => {
     dispatch(resetCart());
-    alert('purchase successfull')
   }
 
   return (
@@ -28,7 +27,7 @@ const Cart = () => {
           <div className="sidebar">
             <h2>Total: Rs {totalAmount}</h2>
             {/* <button onClick={handleCheckout}>Checkout</button> */}
-            <Button text="Checkout" handleClick={handleCheckout} />
+            <Button text="Checkout" handleClick={resetCart} />
           </div>
         </>
       ) : (

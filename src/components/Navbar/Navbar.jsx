@@ -5,6 +5,7 @@ import { getData } from '../../redux/cartReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { FaHome, FaPlus, FaUser, FaShoppingCart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { ToastContainer } from 'react-toastify'
 
 const Navbar = () => {
   const dispatch  = useDispatch();
@@ -16,6 +17,7 @@ const Navbar = () => {
 
   return (
     <>
+      <ToastContainer />
       <nav>
         <NavLink to="/" className="nav-brand">
           <h2>
