@@ -5,35 +5,36 @@ import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 const AddProduct = () => {
-  const { productList } = useSelector(s=>s.cartReducer);
+  const { productList } = useSelector((s) => s.cartReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //State variable to hold and set product details
   const [newProduct, setNewProduct] = useState({
-    id: productList.length+1,
+    id: productList.length + 1,
     imageUrl: "",
     title: "",
     price: 0,
-    rating:0,
-    description:''
+    rating: 0,
+    description: "",
   });
 
+  //function to get product data from input fields
   const handleChange = (e) => {
-    setNewProduct(pv=> {
-      return {...pv, [e.target.name]:e.target.value};
-    })
+    setNewProduct((pv) => {
+      return { ...pv, [e.target.name]: e.target.value };
+    });
   };
 
+  //function to handle actions, when user submits the form
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addProduct(newProduct));
-    navigate('/')
-    // console.log(newProduct);
-
+    navigate("/");
   };
   return (
     <div className="form-container">
-      <h2>Add New Product  </h2>
+      <h2>Add New Product </h2>
       <form action="" onSubmit={handleSubmit}>
         <input
           type="url"
@@ -75,7 +76,7 @@ const AddProduct = () => {
           value={newProduct.description}
           required
         />
-        <Button text='Add' />
+        <Button text="Add" />
       </form>
     </div>
   );

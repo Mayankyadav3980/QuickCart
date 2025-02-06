@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import {
   addProductToCart,
   removeProductFromCart,
@@ -11,9 +11,11 @@ import Rating from "../../components/Rating";
 
 const Details = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
   const { productList, cart } = useSelector((s) => s.cartReducer);
+
   const prdt = productList.find((p) => p.id === Number(id));
+
+  //function to check whether current prdt is in cart or not
   const isProductInCart = (id) => {
     return cart.find((prdt) => prdt.id === Number(id));
   };

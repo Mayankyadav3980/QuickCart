@@ -1,19 +1,14 @@
-import React from "react";
 import "./cart.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard/ProductCard";
-import { resetCart } from '../../redux/cartReducer'
+import { resetCart } from "../../redux/cartReducer";
 import Button from "../../components/Button/Button";
 
 const Cart = () => {
-  const dispatch = useDispatch();
   const { cart } = useSelector((s) => s.cartReducer);
 
-  let totalAmount = cart.reduce((acc, prdt)=>acc+=prdt.price, 0);
-
-  const handleCheckout = () => {
-    dispatch(resetCart());
-  }
+  //using reduce method to calculate total amount of cart items
+  let totalAmount = cart.reduce((acc, prdt) => (acc += prdt.price), 0);
 
   return (
     <div className="cart-container">
@@ -26,12 +21,11 @@ const Cart = () => {
           </div>
           <div className="sidebar">
             <h2>Total: Rs {totalAmount}</h2>
-            {/* <button onClick={handleCheckout}>Checkout</button> */}
             <Button text="Checkout" handleClick={resetCart} />
           </div>
         </>
       ) : (
-        <h1>Your Cart is Empty!!</h1>
+        <h1>Your Cart is Empty🙁!!</h1>
       )}
     </div>
   );

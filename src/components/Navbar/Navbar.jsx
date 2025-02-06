@@ -1,22 +1,25 @@
-import React, {useEffect} from 'react'
-import './navbar.css'
-import { Outlet, NavLink } from 'react-router-dom'
-import { getData } from '../../redux/cartReducer'
-import { useDispatch, useSelector } from 'react-redux'
+import "./navbar.css";
+import React, { useEffect } from "react";
+import { Outlet, NavLink } from "react-router-dom";
+import { getData } from "../../redux/cartReducer";
+import { useDispatch, useSelector } from "react-redux";
 import { FaHome, FaPlus, FaUser, FaShoppingCart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer } from "react-toastify";
 
 const Navbar = () => {
-  const dispatch  = useDispatch();
-  const {cart} =  useSelector(s=>s.cartReducer);
+  const dispatch = useDispatch();
+  const { cart } = useSelector((s) => s.cartReducer);
   const len = cart.length;
-   useEffect(() => {
-     dispatch(getData());
-   }, []);
+
+  // fetches the products data on component mount phase
+  useEffect(() => {
+    dispatch(getData());
+  }, []);
 
   return (
     <>
+      {/* ToastContainer component to display alerts on various user actions */}
       <ToastContainer />
       <nav>
         <NavLink to="/" className="nav-brand">
@@ -49,6 +52,6 @@ const Navbar = () => {
       <Outlet />
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;

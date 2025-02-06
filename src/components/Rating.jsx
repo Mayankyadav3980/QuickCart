@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 
-const Rating = ({rating}) => {
+const Rating = ({ rating }) => {
   return (
     <span>
       {Array.from({ length: rating }).map((_, index) => (
@@ -8,6 +8,6 @@ const Rating = ({rating}) => {
       ))}
     </span>
   );
-}
+};
 
-export default Rating
+export default Rating;

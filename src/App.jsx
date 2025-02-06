@@ -1,5 +1,4 @@
 import "./App.css";
-import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
@@ -20,7 +19,7 @@ function App() {
         { path: "details/:id", element: <Details /> },
         { path: "cart", element: <Cart /> },
         { path: "add-product", element: <AddProduct /> },
-        { path: "edit-product/:id", element: <EditProduct/>},
+        { path: "edit-product/:id", element: <EditProduct /> },
       ],
     },
   ]);

@@ -1,23 +1,16 @@
-.btn{
-    /* display: block; */
-
-    background-color: rgb(41, 41, 41);
-    color: white;
-    width: 150px;
-    margin: 5px auto;
-    padding: .5em;
-    border-radius: 5px;
-    border: 2px solid transparent;
-    /* font-size: 1.1rem; */
+.btn {
+  background-color: rgb(41, 41, 41);
+  color: white;
+  width: 150px;
+  margin: 5px auto;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 2px solid transparent;
 }
 
-.btn:hover{
-    background-color: transparent;
-    border-color: black ;
-    color: black;
-    cursor: pointer;
+.btn:hover {
+  background-color: transparent;
+  border-color: black;
+  color: black;
+  cursor: pointer;
 }
-/* div{
-    border: 1px solid pink;
-    text-align: center;
-} */

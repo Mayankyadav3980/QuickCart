@@ -1,50 +1,39 @@
 import "./editProduct.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProduct, getData } from "../../redux/cartReducer";
+import { updateProduct } from "../../redux/cartReducer";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 
 const EditProduct = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const dispatch = useDispatch();
   const nav = useNavigate();
-  // useEffect(()=>{dispatch(getData())},[])
-  const {productList} = useSelector(state => state.cartReducer);
+  const { productList } = useSelector((state) => state.cartReducer);
 
-  
-  // console.log(id);
-  // console.log(productList);
-  
-  let prdtToUpdate = productList.find(prdt => prdt.id === Number(id))
-  // console.log(prdtToUpdate);
+  //getting the product based on id from url params
+  let prdtToUpdate = productList.find((prdt) => prdt.id === Number(id));
+
   const [updatedProduct, setUpdatedProduct] = useState(prdtToUpdate);
 
   const handleChange = (e) => {
-    setUpdatedProduct(pv=>{
-      return {...pv, [e.target.name]:e.target.value}
-    })
-  }
+    setUpdatedProduct((pv) => {
+      return { ...pv, [e.target.name]: e.target.value };
+    });
+  };
 
+  //dispatches updateProduct action on form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProduct(updatedProduct));    
-    nav('/');
+    dispatch(updateProduct(updatedProduct));
+    nav("/");
   };
 
   return (
     <div className="form-container">
       <h2>Update Details </h2>
       <form action="" onSubmit={handleSubmit}>
-        {/* <div className="input-box">
-          <label htmlFor="">Image Url</label>
-          <input type="url" />
-        </div>
-        <div className="input-box">
-          <label htmlFor="">Title</label>
-          <input type="text" />
-        </div> */}
         <input
           type="url"
           placeholder="ImageUrl"
@@ -85,8 +74,7 @@ const EditProduct = () => {
           value={updatedProduct.description}
           required
         />
-        <Button text={'Update'}/>
-       
+        <Button text={"Update"} />
       </form>
     </div>
   );

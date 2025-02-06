@@ -1,7 +1,5 @@
-import React from "react";
 import "./productCard.css";
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+import { MdEdit, MdDelete } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import { useDispatch } from "react-redux";
@@ -13,7 +11,7 @@ import {
 import Rating from "../Rating";
 
 const ProductCard = ({ prdt }) => {
-  const { id, imageUrl, title, price, rating, description , inCart} = prdt;
+  const { id, imageUrl, title, price, rating, inCart } = prdt;
   const dispatch = useDispatch();
 
   return (
@@ -22,7 +20,7 @@ const ProductCard = ({ prdt }) => {
 
       <div className="desc">
         <h3 className="title">
-          {title.length > 17 ? title.substring(0, 17) + "..." : title}
+          {title.length > 20 ? title.substring(0, 20) + "..." : title}
         </h3>
         <div>
           <p className="price">&#8377;{price}</p>
@@ -37,32 +35,20 @@ const ProductCard = ({ prdt }) => {
               className="cart-btn"
               onClick={() => dispatch(removeProductFromCart(id))}
             >
-              {" "}
-              Remove from Cart{" "}
+              Remove from Cart
             </button>
           ) : (
-            // <Button
-            //   text={"Remove from Cart"}
-            //   payload={id}
-            //   handleClick={removeProductFromCart}
-            // />
             <button
               className="cart-btn"
               onClick={() => dispatch(addProductToCart(prdt))}
             >
               Add Product to Cart
             </button>
-            // <Button
-            //   text={"add Product to cart"}
-            //   payload={prdt}
-            //   handleClick={addProductToCart}
-            // />
           )}
         </div>
 
         <div className="icn">
           <NavLink to={`/details/${id}`}>
-            {/* <button>View Details</button> */}
             <Button text={"View Details"} />
           </NavLink>
           {!inCart && (

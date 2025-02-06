@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
 import "./home.css";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getData, sortProducts, removeFilter } from "../../redux/cartReducer";
-import Button from "../../components/Button/Button";
 
 const Home = () => {
   const { productList, isSorted, cart } = useSelector(
@@ -17,6 +15,7 @@ const Home = () => {
 
   return (
     <div className="home-container">
+      {/* conditionally rendering add/remove filter button */}
       {isSorted ? (
         <button
           className="sort-btn"
@@ -28,19 +27,19 @@ const Home = () => {
           Remove filter
         </button>
       ) : (
-        // <Button  text={'Sort Products'} handleClick={sortProducts}/>
         <button className="sort-btn" onClick={() => dispatch(sortProducts())}>
           Sort Products
         </button>
       )}
 
       <div className="products-container">
+        {/* Mapping through all the available products and rendering on UI */}
         {productList.map((prdt, idx) => {
           let id = prdt.id;
-          let prdtt = isProductInCart(id);
+          let product = isProductInCart(id);
 
-          return prdtt ? (
-            <ProductCard key={idx} prdt={prdtt} />
+          return product ? (
+            <ProductCard key={idx} prdt={product} />
           ) : (
             <ProductCard key={idx} prdt={prdt} />
           );
